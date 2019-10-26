@@ -50,6 +50,13 @@ uint8 i2c_read(void)
 	return ACCESS_REG_8BIT((ICBASE + DATA_OFFSET));
 }
 
+uint8 i2c_reaWithNAck(void)
+{
+	ACCESS_REG_8BIT((ICBASE + CONTROL_OFFSET)) = (SET << TWEN) | (SET << TWINT);
+	while(I2C_BUSY);
+	return ACCESS_REG_8BIT((ICBASE + DATA_OFFSET));
+}
+
 uint8 i2c_getStatus(void)
 {
 	uint8 status;
