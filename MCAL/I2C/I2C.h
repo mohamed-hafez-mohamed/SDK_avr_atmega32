@@ -39,4 +39,5 @@ void  i2c_write(uint8 data);
 
 uint8 i2c_read(void);
 
+uint8 i2c_getStatus(void)
 #endif /* I2C_H_ */
