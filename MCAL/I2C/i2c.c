@@ -9,7 +9,7 @@
 
 #define I2C_BUSY (!(ACCESS_REG_8BIT((ICBASE + CONTROL_OFFSET)) & (1 << TWINT))) 
 
-void  i2c_init(i2c_status status)
+void  i2c_init()
 {
 	ACCESS_REG_8BIT((ICBASE + STATUS_OFFSET))   = 0x00;
 	ACCESS_REG_8BIT((ICBASE + BITRATE_OFFSET))  = 0x02;
@@ -48,4 +48,11 @@ uint8 i2c_read(void)
 	ACCESS_REG_8BIT((ICBASE + CONTROL_OFFSET)) = (SET << TWEN) | (SET << TWINT) | (SET << TWEA);
 	while(I2C_BUSY);
 	return ACCESS_REG_8BIT((ICBASE + DATA_OFFSET));
+}
+
+uint8 i2c_getStatus(void)
+{
+	uint8 status;
+	status = ACCESS_REG_8BIT((ICBASE + STATUS_OFFSET)) & 0xF8;
+	return status;
 }
