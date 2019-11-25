@@ -7,7 +7,7 @@
 
 #include "I2CMA.h"
 
-#define I2C_BUSY (!(ACCESS_REG_8BIT((ICBASE + CONTROL_OFFSET)) & (1 << TWINT))) 
+#define I2C_BUSY (IS_BIT_CLEAR((ICBASE + CONTROL_OFFSET), TWINT)) 
 
 void  i2c_init()
 {
