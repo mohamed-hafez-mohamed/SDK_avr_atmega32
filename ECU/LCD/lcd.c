@@ -1,4 +1,4 @@
-﻿/*
+/*
  * lcd.c
  *
  * Created: 8/31/2019 04:23:37 م
@@ -17,6 +17,10 @@
 
 static void kick(const lcdcnfg_t* ptrlcdcnfg, uint8 chr)
 {
+	/*
+	* assign data in the pins of the confg
+	* make pulse to make lcd work
+	*/
 	uint8 i;
 	for(i = 0;i < DATA_PINS;i++)
 	{
@@ -36,6 +40,10 @@ static void kick(const lcdcnfg_t* ptrlcdcnfg, uint8 chr)
 
 void lcd_init(const lcdcnfg_t* ptrlcdcnfg)
 {
+	/*
+	* set dirction output for data and control pins
+	* config the lcd to start working
+	*/
 	uint8 i;
 	for(i = 0;i < DATA_PINS;i++)
 	{
@@ -45,7 +53,7 @@ void lcd_init(const lcdcnfg_t* ptrlcdcnfg)
 	pin_dirc(EN,PIN_OUTPUT);
 	pin_dirc(RS,PIN_OUTPUT);
 	#ifdef _4BIT_MODE
-	lcd_cmd(ptrlcdcnfg,LCD_4BIT_MODE);
+	lcd_cmd(ptrlcdcnfg,LCD_4BIT_MODE);        
 	lcd_cmd(ptrlcdcnfg,LCD_4BIT_MODE_2_LINE);
 	#endif
 	
@@ -60,6 +68,10 @@ void lcd_init(const lcdcnfg_t* ptrlcdcnfg)
 
 void lcd_cmd(const lcdcnfg_t* ptrlcdcnfg, uint8 cmd)
 {
+	/*
+	* select the register "command || data " in this case command
+	* sent the command
+	*/
 	pin_write(RS,LOW_LEVEL);
 	
 	#ifdef _8BIT_MODE
