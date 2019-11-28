@@ -1,8 +1,8 @@
-﻿/*
+/*
  * SPI.c
  *
  * Created: 9/17/2019 10:33:23 م
- *  Author: mah_h
+ *  Author: Mohamed Hafez
  */ 
 
 #include "SPI.h"
@@ -44,20 +44,20 @@ void spi_interruptDisable()
 uint8 spi_exchangeData(uint8 data)
 {  // check if slave it will be stucked here
 	WRITE_REG_8BIT((SPIBASE+SPDR_OFFSET),data);
-	while (!IS_BIT_SET((SPIBASE+SPSR_OFFSET),SPIF));
+	while (IS_BIT_CLEAR((SPIBASE+SPSR_OFFSET),SPIF));
 	return READ_REG_8BIT((SPIBASE + SPDR_OFFSET));
 }
 
 uint8 spi_receive()
 {
-	while (!IS_BIT_SET((SPIBASE+SPSR_OFFSET),SPIF));
+	while (IS_BIT_CLEAR((SPIBASE+SPSR_OFFSET),SPIF));
 	return READ_REG_8BIT((SPIBASE + SPDR_OFFSET));
 }
 
 void spi_transmit(uint8 data)
 {
 	WRITE_REG_8BIT((SPIBASE + SPDR_OFFSET),data);
-	while (!IS_BIT_SET((SPIBASE+SPSR_OFFSET),SPIF));
+	while (IS_BIT_CLEAR((SPIBASE+SPSR_OFFSET),SPIF));
 }
 
 void Spi_assignCallBack(void(*ptr_CallBackFun)(uint8))
