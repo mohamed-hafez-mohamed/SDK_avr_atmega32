@@ -1,7 +1,7 @@
-﻿/*
+/*
  * timer_cnfg.h
  *
- * Created: 9/19/2019 09:42:47 م
+ * Created: 9/19/2019 09:42:47 ?
  *  Author: mah_h
  */ 
 
@@ -46,6 +46,8 @@
 #define OCIE0 1
 #define TOV0  0
 #define OCF0  1
+#define OC0   B3
+#define T0    B0
 //TIMER1 BITS NAMES
 #define WGM10  0
 #define COM1B0 4
