@@ -20,25 +20,25 @@ typedef  long sint32;
 typedef  long long sint64;
 typedef uint8 bool_t;
 
-#define ACCESS_REG_8BIT(REG)         (*(volatile uint8*)REG)
+#define ACCESS_REG_8BIT(REG)       (*(volatile uint8*)REG)
 
-#define ACCESS_REG_16BIT(REG)        (*(volatile uint16*)REG)
+#define ACCESS_REG_16BIT(REG)      (*(volatile uint16*)REG)
 
-#define READ_REG_8BIT(REG)           (*(volatile uint8*)(REG))
+#define READ_REG_8BIT(REG)         (*(volatile uint8*)(REG))
 
-#define READ_REG_16BIT(REG)          (*(volatile uint16*)(REG))
+#define READ_REG_16BIT(REG)        (*(volatile uint16*)(REG))
 
-#define WRITE_REG_8BIT(REG,Val)      (ACCESS_REG_8BIT(REG)) = (Val);
+#define WRITE_REG_8BIT(REG,Val)    (ACCESS_REG_8BIT(REG)) = (Val);
 
-#define SET_BIT(REG,BIT_NUM)		 (ACCESS_REG_8BIT(REG) |= 1<<(BIT_NUM))
+#define SET_BIT(REG,BIT_NUM)		   (ACCESS_REG_8BIT(REG) |= 1<<(BIT_NUM))
 
-#define CLEAR_BIT(REG,BIT_NUM)       (ACCESS_REG_8BIT(REG) &= (~(1<<(BIT_NUM))))
+#define CLEAR_BIT(REG,BIT_NUM)     (ACCESS_REG_8BIT(REG) &= (~(1<<(BIT_NUM))))
 
 #define TOGGLE_BIT(REG,BIT_NUM)  	 (ACCESS_REG_8BIT(REG) ^= (1<<BIT_NUM) )
 
-#define IS_BIT_SET(REG,BIT_NUM)      ((ACCESS_REG_8BIT(REG) & (1 << BIT_NUM)))
+#define IS_BIT_SET(REG,BIT_NUM)     ((ACCESS_REG_8BIT(REG) & (1 << BIT_NUM)))
 
-#define IS_BIT_CLEAR(REG,BIT_NUM)    (!(BIT_IS_SET(REG,BIT_NUM)))
+#define IS_BIT_CLEAR(REG,BIT_NUM)    (!(IS_BIT_SET(REG,BIT_NUM)))
 
 
 
