@@ -1,7 +1,7 @@
-﻿/*
+/*
  * ADC.h
  *
- * Created: 9/3/2019 09:23:43 م
+ * Created: 9/3/2019 09:23:43 ?
  *  Author: mah_h
  */ 
 
@@ -9,6 +9,7 @@
 #ifndef ADC_H_
 #define ADC_H_
 
+#include <avr/interrupt.h>
 #include "GPIO.h"
 #include "adc_cnfg.h"
 
@@ -34,15 +35,21 @@
 
 typedef enum
 {
-	CHANNEL0,
-	CHANNEL1,
-	CHANNEL2,
-	CHANNEL3,
-	CHANNEL4,
-	CHANNEL5,
-	CHANNEL6,
-	CHANNEL7,
-}channel_selectType;
+	AREF_OFF      = 0,
+	AVCC          = 1,
+	INTERNAL_VREF = 3,
+}vref_selectType;
+
+typedef enum
+{
+	FREE_RUNNING_MODE    = 0,
+	ANALOG_COMPARTOR     = 1,
+	EXTERNAL_INITERRUPT0 = 2,
+	COMPARE_MATCH_TIMER0 = 3,
+	OVERFLOW_TIMER0      = 4,
+	COMPARE_MATCH_TIMER1 = 5,
+	OVERFLOW_TIMER1      = 6,
+}mode_selectType;
 
 typedef enum
 {
@@ -57,26 +64,34 @@ typedef enum
 
 typedef enum
 {
-	AREF_OFF      = 0,
-	AVCC          = 1,
-    INTERNAL_VREF = 3,
-}vref_selectType;
+	CHANNEL0,
+	CHANNEL1,
+	CHANNEL2,
+	CHANNEL3,
+	CHANNEL4,
+	CHANNEL5,
+	CHANNEL6,
+	CHANNEL7,
+}channel_selectType;
 
-typedef enum
+typedef enum            //ADC Interrupt Enable
 {
-	FREE_RUNNING_MODE    = 0,
-	ANALOG_COMPARTOR     = 1,
-	EXTERNAL_INITERRUPT0 = 2,
-	COMPARE_MATCH_TIMER0 = 3,
-	OVERFLOW_TIMER0      = 4,
-	COMPARE_MATCH_TIMER1 = 5,
-	OVERFLOW_TIMER1      = 6,
-}mode_selectType;
+	ADC_DISABLE,
+	ADC_ENABLE
+}INT_cnfg;
 
-void   adc_init(vref_selectType vref,mode_selectType mod,clk_selectType clk,void (*ptr_fu)(uint16));
+typedef struct
+{
+	vref_selectType    vref;
+	clk_selectType     clk;
+	mode_selectType    mode;
+	INT_cnfg           adcint;
+}ADC_cnfg;
+
+void   adc_init(ADC_cnfg* ptrADC,void (*ptr_func)(uint16 val));
 
 uint16 adc_read(channel_selectType channel);
 
-void   adc_intEnable(void (*F_callBack)(uint16 val),channel_selectType channel);
+void   adc_int(channel_selectType channel, void (*ptr_func)(uint16 val));
 
 #endif /* ADC_H_ */
