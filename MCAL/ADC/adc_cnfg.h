@@ -11,7 +11,7 @@
 
 
 #define VREF           5.0
-#define MAX_LEVEL_NUM  1024.0
+#define MAX_LEVEL_NUM  1023.0
 
 
 #endif /* ADC_CNFG_H_ */
