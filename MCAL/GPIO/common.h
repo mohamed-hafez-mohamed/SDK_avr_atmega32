@@ -1,7 +1,7 @@
-﻿/*
+/*
  * common.h
  *
- * Created: 8/26/2019 09:48:21 ص
+ * Created: 8/26/2019 09:48:21 ?
  *  Author: Mohamed Hafez
  */ 
 
@@ -38,7 +38,7 @@ typedef uint8 bool_t;
 
 #define IS_BIT_SET(REG,BIT_NUM)      ((ACCESS_REG_8BIT(REG) & (1 << BIT_NUM)))
 
-#define IS_BIT_CLEAR(REG,BIT_NUM)    (!(BIT_IS_SET(REG,BIT_NUM)))
+#define IS_BIT_CLEAR(REG,BIT_NUM)    (!(IS_BIT_SET(REG,BIT_NUM)))
 
 
 #endif /* COMMON_H_ */
