@@ -85,13 +85,12 @@ typedef struct
 	vref_selectType    vref;
 	clk_selectType     clk;
 	mode_selectType    mode;
-	INT_cnfg           adcint;
 }ADC_cnfg;
 
 void   adc_init(ADC_cnfg* ptrADC,void (*ptr_func)(uint16 val));
 
 uint16 adc_read(channel_selectType channel);
 
-void   adc_int(channel_selectType channel, void (*ptr_func)(uint16 val));
+void   adc_int(INT_cnfg adcint, channel_selectType channel, void (*ptr_func)(uint16 val));
 
 #endif /* ADC_H_ */
