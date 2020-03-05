@@ -57,8 +57,6 @@ typedef struct
 	clk_selectType        Timer0_clkSelect;
 	WAVE_FORM_GEN         Timer0_mode;
 	COMPARE_MATCH_OUTPUT  Timer0_COM;
-	TOVFIE0               Timer0_TOIE;
-	OCMIE0                Timer0_OCIE;
 }timer0_cnfg;
 
 void timer0_init(timer0_cnfg* ptrtimer0);
@@ -67,8 +65,8 @@ uint8 ocr0(uint8 mode, uint8 value);
 
 uint8 tcnt0(uint8 mode, uint8 value);
 
-void ov_int(void (*ptr_ISR)(void));
+void ov_int(TOVFIE0 Timer0_TOIE, void(*ptr_ISR)(void));
 
-void oc_int(void (*ptr_ISR)(void));
+void oc_int(OCMIE0 Timer0_OCIE, void(*ptr_ISR)(void));
 
 #endif /* TIMER0_H_ */
