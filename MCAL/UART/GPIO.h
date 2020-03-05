@@ -1,13 +1,14 @@
-﻿/*
+/*
  * GPIO.h
  *
- * Created: 8/31/2019 04:16:51 م
+ * Created: 8/26/2019 09:50:07 ?
  *  Author: Mohamed Hafez
  */ 
 
 
 #ifndef GPIO_H_
 #define GPIO_H_
+
 
 #include "common.h"
 #include "platform_PCfg.h"
@@ -116,4 +117,8 @@ void set_pins(uint8 pin_start, uint8 pin_end);                               //S
 void clear_pins(uint8 pin_start, uint8 pin_end);                             //CLEAR GROUP OD PINS
 
 void uart_cnfg(void);
+
+void spi_cnfg_master(void);
+
+void spi_cnfg_Slave(void);
 #endif /* GPIO_H_ */
