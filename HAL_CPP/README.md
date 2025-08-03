@@ -1,0 +1,1 @@
+# HAL layer for SDK_avr_atmega32 in cpp
