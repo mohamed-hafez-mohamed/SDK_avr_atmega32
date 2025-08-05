@@ -1,17 +1,17 @@
 /**
- * @file E: GpioConfig.hpp
- * @brief Gpio Driver Configuration Header File.
+ * @file E: Timer_Core0.hpp
+ * @brief Timer Driver Configuration Header File For Core0.
  * @author Mohamed Hafez
  * @date 2025-08-02
  * @version 1.0
  */
 
-#ifndef GPIO_CONFIG_HPP
-#define GPIO_CONFIG_HPP
+#ifndef TIMER_CORE_0_HPP
+#define TIMER_CORE_0_HPP
 /************************************
 INCLUDES
 ************************************/
-#include "HAL_CPP/Gpio/GpioTypes_Atmega32.hpp"
+#include "HAL_CPP/Timer/TimerTraits_Atmega32.hpp"
 /************************************
  * MACROS / CONSTANT EXPRESSIONS
  ************************************/
@@ -42,7 +42,7 @@ namespace HAL
 	} // namespace gpio
 } // namespace HAL
 
-#endif // GPIO_CONFIG_HPP
+#endif // TIMER_CORE_0_HPP
 
 /*******************************************************************************
 Change History

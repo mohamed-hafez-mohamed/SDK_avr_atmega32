@@ -1,18 +1,18 @@
 /**
- * @file Gpio.hpp
- * @brief Gpio Driver Header File.
+ * @file Timer.hpp
+ * @brief Timer Driver Header File.
  * @author Mohamed Hafez
  * @date 2025-08-02
  * @version 1.0
  */
-#ifndef GPIO_HPP
-#define GPIO_HPP
+#ifndef TIMER_HPP
+#define TIMER_HPP
 
 /************************************
 INCLUDES
 ************************************/
 #include <cstdint>
-#include "HAL_CPP/Config/GpioConfig.hpp"
+#include "HAL_CPP/Config/TimerConfig.hpp"
 /************************************
  * MACROS / CONSTANT EXPRESSIONS
  ************************************/
@@ -355,7 +355,7 @@ namespace HAL
 	}
 }
 
-#endif // GPIO_HPP
+#endif // TIMER_HPP
 
 /*******************************************************************************
 Change History

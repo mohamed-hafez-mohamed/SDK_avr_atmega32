@@ -1,6 +1,6 @@
 /**
- * @file Gpio_DriverLib.cpp
- * @brief Gpio Driver Source File.
+ * @file Timer_Atmega32.cpp
+ * @brief Timer Driver Source File.
  * @author Mohamed Hafez
  * @date 2025-08-02
  * @version 1.0
@@ -8,8 +8,8 @@
 /************************************
 INCLUDES
 ************************************/
-#include "MCAL\GPIO\GPIO.h"
-#include "Gpio.hpp"
+#include "MCAL/TIMER0/TIMER0.h"
+#include "Timer.hpp"
 /************************************
 EXTERN VARIABLES
 ************************************/

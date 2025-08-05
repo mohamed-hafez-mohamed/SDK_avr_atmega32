@@ -1,13 +1,13 @@
 /**
- * @file E: GpioTypes_Atmega32.hpp
- * @brief Gpio Types For Atmega32 Target.
+ * @file E: TimerTraits_Atmega32.hpp
+ * @brief Timer Traits For Atmega32 Target.
  * @author Mohamed Hafez
  * @date 2025-08-02
  * @version 1.0
  */
 
-#ifndef GPIO_TYPES_ATMEGA_32_HPP
-#define GPIO_TYPES_ATMEGA_32_HPP
+#ifndef TIMER_TRAITS_ATMEGA_32_HPP
+#define TIMER_TRAITS_ATMEGA_32_HPP
 /************************************
 INCLUDES
 ************************************/
@@ -95,7 +95,7 @@ namespace HAL
 	} // namespace gpio
 } // namespace HAL
 
-#endif // GPIO_TYPES_ATMEGA_32_HPP
+#endif // TIMER_TRAITS_ATMEGA_32_HPP
 
 /*******************************************************************************
 Change History
