@@ -25,74 +25,44 @@ NAMESPACES
 ************************************/
 namespace HAL
 {
-	namespace gpio
+	namespace timer
 	{
-		namespace types
-		{
+		/**
+		 * @brief Timer Traits Class for Atmega32.
+		 */
+		struct TimerTraits
+		{ 
+			using timer_id_t           = std::uint8_t;   ///< Type for Timer ID
+			using timer_base_address_t = std::uint8_t;   ///< Type for Timer Base Address
+			using Callback_t = void(*)(void);            ///< Type alias for Timer Callback function type.
 			/**
-          * @brief Gpio Port ID Enumeration.
-          */
-			enum class port_id : std::uint8_t
+		     * @brief Enum for Timer Prescaler options.
+		     */
+			enum class prescaler_t : std::uint8_t
 			{
-            A = UINT8_C(0),              ///< Port A ID
-				B = UINT8_C(1),              ///< Port B ID
-				C = UINT8_C(2),              ///< Port C ID
-				D = UINT8_C(3),              ///< Port D ID
-			}; 
-
-			/**
-          * @brief Gpio Pin ID Enumeration.
-          */
-			enum class pin_id : std::uint8_t
-			{
-            PB0 = UINT8_C(1),            ///< Pin PB0 ID
-				PB1 = UINT8_C(2),            ///< Pin PB1 ID
-				PB2 = UINT8_C(3),            ///< Pin PB2 ID
-				PB3 = UINT8_C(4),            ///< Pin PB3 ID
-				PB4 = UINT8_C(5),            ///< Pin PB4 ID
-				PB5 = UINT8_C(6),            ///< Pin PB5 ID
-				PB6 = UINT8_C(7),            ///< Pin PB6 ID
-				PB7 = UINT8_C(8),            ///< Pin PB7 ID
-				PD0 = UINT8_C(14),           ///< Pin PD0 ID
-				PD1 = UINT8_C(15),           ///< Pin PD1 ID
-				PD2 = UINT8_C(16),           ///< Pin PD2 ID
-				PD3 = UINT8_C(17),           ///< Pin PD3 ID
-				PD4 = UINT8_C(18),           ///< Pin PD4 ID
-				PD5 = UINT8_C(19),           ///< Pin PD5 ID
-				PD6 = UINT8_C(20),           ///< Pin PD6 ID
-				PD7 = UINT8_C(21),           ///< Pin PD7 ID
-				PC0 = UINT8_C(22),           ///< Pin PD0 ID
-				PC1 = UINT8_C(23),           ///< Pin PD1 ID
-				PC2 = UINT8_C(24),           ///< Pin PD2 ID
-				PC3 = UINT8_C(25),           ///< Pin PD3 ID
-				PC4 = UINT8_C(26),           ///< Pin PD4 ID
-				PC5 = UINT8_C(27),           ///< Pin PD5 ID
-				PC6 = UINT8_C(28),           ///< Pin PD6 ID
-				PC7 = UINT8_C(29),           ///< Pin PD7 ID
-				PA0 = UINT8_C(40),           ///< Pin PA0 ID
-				PA1 = UINT8_C(39),           ///< Pin PA1 ID
-				PA2 = UINT8_C(38),           ///< Pin PA2 ID
-				PA3 = UINT8_C(37),           ///< Pin PA3 ID
-				PA4 = UINT8_C(36),           ///< Pin PA4 ID
-				PA5 = UINT8_C(35),           ///< Pin PA5 ID
-				PA6 = UINT8_C(34),           ///< Pin PA6 ID
-				PA7 = UINT8_C(33)            ///< Pin PA7 ID
+				NO_CLK_SRC         = UINT8_C(0),          ///< Timer Disable
+	            NO_PRESCALING      = UINT8_C(1),          ///< No-Prescaling
+	            DIVIDE_BY_8        = UINT8_C(2),          ///< Divide by 8
+	            DIVIDE_BY_64       = UINT8_C(3),          ///< Divide by 64
+	            DIVIDE_BY_256      = UINT8_C(4),          ///< Divide by 256
+	            DIVIDE_BY_1024     = UINT8_C(5),          ///< Divide by 1024
+	            EXT_CLK_FALLING    = UINT8_C(6),          ///< External Clock on Falling Edge
+	            EXT_CLK_RISING     = UINT8_C(7)           ///< External Clock on Rising Edge
 			};
 
-			/**
-          * @brief Gpio Direction Enumeration.
-          */
-			enum direction : std::uint8_t
-			{
-				Input = UINT8_C(0),          ///< Zero Means Input
-				Output = UINT8_C(1)          ///< One Means Output
-			};
-			/**
-          * @brief Gpio Port Width.
-          */
-			using port_width = std::uint8_t;
-		} // namespace types
-	} // namespace gpio
+            struct Config_t{};    ///< Currently the configuration/initialization is handled entirely by TI Sysconfig, so we'll keep it empty.
+		};
+
+		/**
+		 * @brief Timer 0 Traits Class for Atmega32.
+		 */
+		struct Atmega32_Timer0_Traits : public TimerTraits 
+        {
+		   using timer_width_t = std::uint8_t;                                              ///< Type for Timer Width
+           static constexpr timer_id_t timer_id = 0;                                        ///< Timer ID for Timer 0.
+           static constexpr timer_base_address_t timer_base_address = UINT32_C(0x52);       ///< Base address for Timer 0.
+        };
+	} // namespace timer
 } // namespace HAL
 
 #endif // TIMER_TRAITS_ATMEGA_32_HPP
