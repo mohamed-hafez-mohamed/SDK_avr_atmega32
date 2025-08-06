@@ -11,36 +11,30 @@
 /************************************
 INCLUDES
 ************************************/
-#include "HAL_CPP/Timer/TimerTraits_Atmega32.hpp"
+#include "Timer_Core0.hpp"
 /************************************
  * MACROS / CONSTANT EXPRESSIONS
  ************************************/
 
 /************************************
-EXPORTED VARIABLES
-************************************/
-
-/************************************
 NAMESPACES
 ************************************/
-namespace HAL
-{
-	namespace gpio
-	{
-		namespace config
-		{
-			/**
-          * @brief Gpio Port ID Enumeration Configuration.
-          */
-			using port_id = HAL::gpio::types::port_id;
+using namespace HAL::timer;
 
-			/**
-          * @brief Gpio Pin ID Enumeration Configuration.
-          */
-			using pin_id = HAL::gpio::types::pin_id;
-		} // namespace config
-	} // namespace gpio
-} // namespace HAL
+/************************************
+EXPORTED VARIABLES
+************************************/
+extern "C"
+{
+
+    // void Timer0_ISR(void)
+    // {
+    //     if(Cpu_Timer0::callback)
+    //     {
+    //         Cpu_Timer0::callback();
+    //     }
+    // }
+}
 
 #endif // TIMER_CORE_0_HPP
 

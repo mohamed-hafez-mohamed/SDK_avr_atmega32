@@ -6,12 +6,13 @@
  * @version 1.0
  */
 
-#ifndef TIMER_CORE_0_HPP
-#define TIMER_CORE_0_HPP
+#ifndef HAL_TIMER_CORE_0_HPP
+#define HAL_TIMER_CORE_0_HPP
 /************************************
 INCLUDES
 ************************************/
-#include "HAL_CPP/Timer/TimerTraits_Atmega32.hpp"
+#include "HAL/Timer/Timer_Atmega32.hpp"
+#include "HAL/Timer/TimerTraits_Atmega32.hpp"
 /************************************
  * MACROS / CONSTANT EXPRESSIONS
  ************************************/
@@ -25,22 +26,11 @@ NAMESPACES
 ************************************/
 namespace HAL
 {
-	namespace gpio
-	{
-		namespace config
-		{
-			/**
-          * @brief Gpio Port ID Enumeration Configuration.
-          */
-			using port_id = HAL::gpio::types::port_id;
-
-			/**
-          * @brief Gpio Pin ID Enumeration Configuration.
-          */
-			using pin_id = HAL::gpio::types::pin_id;
-		} // namespace config
-	} // namespace gpio
-} // namespace HAL
+    namespace timer
+    {
+        using Cpu_Timer0 = Atmega32_Timer<Atmega32_Timer0_Traits>; ///< Alias for Timer 0.
+    }
+}
 
 #endif // TIMER_CORE_0_HPP
 

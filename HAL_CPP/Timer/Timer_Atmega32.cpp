@@ -46,73 +46,83 @@ STATIC FUNCTION IMPLEMENTATION
 
 GLOBAL FUNCTIONS IMPLEMENTATION
 **********************************/
-using namespace HAL::gpio;
+using namespace HAL::timer;
 
-void Gpio::init(void)
+typename<typename Traits>
+void Timer<Traits>::init(const config_t& config)
 {
-   /** 
-	 * Initialization is done in the mcal libray.
-	 * Add any initialization code if needed.
-	 */
+	// Initialization logic for the timer based on the provided configuration.
+	// This is typically done in the mcal library, so this function may be empty.
 }
 
-bool pin_view::get_pin_value(void) const
+template<typename Traits>
+void Timer<Traits>::start()
 {
-	return static_cast<bool>(pin_read(static_cast<uint8_t>(m_pin)));
+	///< Start the timer with the specified prescaler.
 }
 
-pin_view::operator bool(void) const
+template<typename Traits>
+void Timer<Traits>::stop()
 {
-	return static_cast<bool>(pin_read(static_cast<uint8_t>(m_pin)));
+	///< Stop the timer
+}
+	
+template<typename Traits>
+TimerWidth Timer<Traits>::get_value() const
+{
+	///< Get the current timer value.
 }
 
-void pin::set_direction(direction pin_direction)
+template<typename Traits>
+TimerWidth Timer<Traits>::set_prescaler(Prescaler prescaler) 
 {
-	pin_dirc(static_cast<uint8_t>(m_pin), static_cast<pinDirc_t>(pin_direction));
+	///< Set the prescaler for the timer.
 }
 
-void pin::set_pin(void)
+template<typename Traits>
+void Timer<Traits>::set_callback(Callback_t cb)
 {
-	pin_write(static_cast<uint8_t>(m_pin), static_cast<logic_status_t>(true));
+	///< Set the callback function to be called on timer overflow.
 }
 
-void pin::clear_pin(void)
+template<typename Traits>
+void Timer<Traits>::enable_interrupt()
 {
-	pin_write(static_cast<uint8_t>(m_pin), static_cast<logic_status_t>(false));
+	///< Enable the timer interrupt.
 }
 
-void pin::write_pin(bool pin_state)
+template<typename Traits>
+void Timer<Traits>::disable_interrupt()
 {
-	pin_write(static_cast<uint8_t>(m_pin), static_cast<logic_status_t>(pin_state));
+	///< Disable the timer interrupt.
 }
 
-pin& pin::operator =(bool pin_state)
+template<typename Traits>
+void Atmega32_Timer<Traits>::clear_overflow_flag(void)
 {
-   pin_write(static_cast<uint8_t>(m_pin), static_cast<logic_status_t>(pin_state));
-	return *this;
+	///< Clear the timer overflow flag.
 }
 
-port_width port_view::get_port_value(void) const
+template<typename Traits>
+void Atmega32_Timer<Traits>::is_overflowed(void)
 {
-	return static_cast<bool>(port_read(static_cast<port_t>(m_port)));
+	///< Check if the timer has overflowed.
+	///< Return true if overflowed, false otherwise.
 }
 
-port_view::operator port_width(void) const
+template<typename Traits>
+void Atmega32_Timer<Traits>::set_period(timer_width_t period)
 {
-	return static_cast<bool>(port_read(static_cast<port_t>(m_port)));
+	///< Set the timer period.
+	///< This typically involves writing to the timer's compare register or similar.
+	///< The exact implementation will depend on the specific timer hardware and its registers.
 }
 
-void port::write_port(port_width port_state)
-{
-	port_write(static_cast<port_t>(m_port), static_cast<uint8_t>(port_state));
-}
-
-port& port::operator =(port_width port_state)
-{
-   port_write(static_cast<port_t>(m_port), static_cast<uint8_t>(port_state));
-	return *this;
-}
-
+// The purpose of the following include is to ensure that the class templates are instantiated. 
+// As a result of implementing the methods of a class template in a source file, we need to explicitly instantiate them in the same implementation file.
+// This is necessary to avoid linker errors when the class templates are used in multiple translation units.
+// This file should be defined by each core, depending on the specific timers used by that core.
+#include "Config/HAL/Timer/ExplicitInstantiation.hpp"
 /*******************************************************************************
 Change History
  ********************************************************************************

@@ -50,7 +50,7 @@ namespace HAL
 	            EXT_CLK_RISING     = UINT8_C(7)           ///< External Clock on Rising Edge
 			};
 
-            struct Config_t{};    ///< Currently the configuration/initialization is handled entirely by TI Sysconfig, so we'll keep it empty.
+            struct config_t{};    ///< Currently the configuration/initialization is handled entirely by TI Sysconfig, so we'll keep it empty.
 		};
 
 		/**

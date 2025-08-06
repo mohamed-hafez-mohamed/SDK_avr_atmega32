@@ -109,9 +109,7 @@ namespace HAL
 
 		/**
          * @brief Static member initialization for the Timer class template.
-         *
-         * This initializes the static member 'callback' of the Timer class template for the given Traits type.
-         *
+         * @details This initializes the static member 'callback' of the Timer class template for the given Traits type.
          * @note This is a templated static variable, so it is valid to define and initialize it in the header file.
          */
         template<typename Traits>
