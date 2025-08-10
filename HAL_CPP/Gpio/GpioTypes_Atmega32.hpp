@@ -11,7 +11,7 @@
 /************************************
 INCLUDES
 ************************************/
-#include <cstdint>
+#include <stdint.h>
 /************************************
  * MACROS / CONSTANT EXPRESSIONS
  ************************************/
@@ -32,7 +32,7 @@ namespace HAL
 			/**
           * @brief Gpio Port ID Enumeration.
           */
-			enum class port_id : std::uint8_t
+			enum class port_id : uint8_t
 			{
             A = UINT8_C(0),              ///< Port A ID
 				B = UINT8_C(1),              ///< Port B ID
@@ -43,7 +43,7 @@ namespace HAL
 			/**
           * @brief Gpio Pin ID Enumeration.
           */
-			enum class pin_id : std::uint8_t
+			enum class pin_id : uint8_t
 			{
             PB0 = UINT8_C(1),            ///< Pin PB0 ID
 				PB1 = UINT8_C(2),            ///< Pin PB1 ID
@@ -82,7 +82,7 @@ namespace HAL
 			/**
           * @brief Gpio Direction Enumeration.
           */
-			enum direction : std::uint8_t
+			enum direction : uint8_t
 			{
 				Input = UINT8_C(0),          ///< Zero Means Input
 				Output = UINT8_C(1)          ///< One Means Output
@@ -90,7 +90,7 @@ namespace HAL
 			/**
           * @brief Gpio Port Width.
           */
-			using port_width = std::uint8_t;
+			using port_width = uint8_t;
 		} // namespace types
 	} // namespace gpio
 } // namespace HAL

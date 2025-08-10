@@ -8,7 +8,10 @@
 /************************************
 INCLUDES
 ************************************/
-#include "MCAL\GPIO\GPIO.h"
+extern "C"
+{
+   #include "GPIO.h"
+}
 #include "Gpio.hpp"
 /************************************
 EXTERN VARIABLES

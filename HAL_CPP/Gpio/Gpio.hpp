@@ -11,8 +11,8 @@
 /************************************
 INCLUDES
 ************************************/
-#include <cstdint>
-#include "HAL_CPP/Config/GpioConfig.hpp"
+#include <stdint.h>
+#include "GpioConfig.hpp"
 /************************************
  * MACROS / CONSTANT EXPRESSIONS
  ************************************/
